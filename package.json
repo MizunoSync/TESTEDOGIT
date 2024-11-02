@@ -1,17 +1,18 @@
 {
-  "name": "your-project-name",
+  "name": "TESTEDOGIT",
   "version": "1.0.0",
-  "description": "A brief description of your project",
+  "description": "Your project description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "your-build-command"
+    "test": "jest",
+    "build": "your-build-command"  // Replace with your actual build command
   },
   "dependencies": {
-    "your-dependency": "^1.0.0"
+    "express": "^4.17.1",  // Example of an actual dependency
+    "axios": "^0.21.1"     // Another example
   },
   "devDependencies": {
-    "your-dev-dependency": "^1.0.0"
+    "jest": "^26.6.0"      // Example of a development dependency
   },
   "author": "Your Name",
   "license": "ISC"
