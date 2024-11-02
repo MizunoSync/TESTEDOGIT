@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Workflow
 
 on:
   push:
@@ -13,18 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'  # Specify the Node.js version
 
-      - name: Install Dependencies
-        run: echo "No dependencies to install."
+      - name: Install dependencies
+        run: npm install  # Change this if not using npm
 
-      - name: Run Server
+      - name: Run tests
+        run: npm test  # Change this to your test command
+
+      - name: Build project
+        run: npm run build  # Change this to your build command
+
+      - name: Deploy
         run: |
-          echo "Starting server..."
-          node index.js
+          echo "Deploying..."
+          # Add your deployment commands here
