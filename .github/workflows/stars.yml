@@ -13,7 +13,7 @@ on:
 jobs:
   # 🌟 Galactic Build Job 🌟
   build:
-    runs-on: ubuntu-latest  # 🌑 Base on Ubuntu, our cosmic platform 
+    runs-on: ubuntu-latest  # 🌑 Base on Ubuntu, our cosmic platform
 
     steps:
       - name: 🌠 Checkout Code from the Repository Nebula
@@ -28,19 +28,19 @@ jobs:
         run: |
           echo "Installing dependencies..."
           npm install
-        working-directory: ./TESTEDOGIT  # Sets the correct working directory
+        working-directory: ./  # Set to the root directory where package.json is located
 
       - name: ☄️ Run Tests (Galaxy Diagnostics) ☄️
         run: |
           echo "Running tests..."
           npm test
-        working-directory: ./TESTEDOGIT  # Sets the correct working directory
+        working-directory: ./  # Set to the root directory
 
       - name: 🚀 Build the Universe (Compile) 🚀
         run: |
           echo "Starting build process..."
           npm run build
-        working-directory: ./TESTEDOGIT  # Sets the correct working directory
+        working-directory: ./  # Set to the root directory
 
   # 🌠 Intergalactic Deployment 🌠
   deploy:
