@@ -1,27 +1,16 @@
-// Importing the required modules
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000; // Set the port, default to 3000
+// Import the built-in http module
+const http = require('http');
 
-// Middleware to parse JSON requests
-app.use(express.json());
+// Define the port
+const PORT = process.env.PORT || 3000;
 
-// Basic route for the root
-app.get('/', (req, res) => {
-    res.send('Welcome to the Cosmic API! 🌌'); // Respond with a welcome message
-});
-
-// Example API endpoint
-app.get('/api/data', (req, res) => {
-    const data = {
-        message: 'Here is some cosmic data for you!',
-        stars: 100,
-        galaxies: 50
-    };
-    res.json(data); // Respond with JSON data
+// Create the server
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Welcome to the Cosmic API! 🌌\n'); // Respond with a welcome message
 });
 
 // Start the server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
