@@ -1,61 +1,30 @@
-name: 🌌 CI/CD Cosmic Pipeline 🚀
+name: CI/CD Pipeline
 
-# 🌠 When Stars Align (Trigger) 🌠
 on:
   push:
     branches:
-      - main  # 🌟 Shooting Star (Push to main triggers the pipeline)
+      - main
   pull_request:
     branches:
-      - main  # 🌌 Cosmic Pull (Triggers on pull requests to main)
+      - main
 
-# 🌌 Star Clusters (Jobs) 🌌
 jobs:
-  # 🌟 Galactic Build Job 🌟
   build:
-    runs-on: ubuntu-latest  # 🌑 Base on Ubuntu, our cosmic platform
+    runs-on: ubuntu-latest
 
     steps:
-      - name: 🌠 Checkout Code from the Repository Nebula
-        uses: actions/checkout@v2  # 🚀 Pulls down your code
-
-      - name: 🌠 Initialize Node.js Constellation
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'  # 🔭 Target Node.js version for your galaxy
-
-      - name: 🌌 Install Dependencies (Powering Up) 🌌
-        run: |
-          echo "Installing dependencies..."
-          npm install
-        working-directory: ./  # Set to the root directory where package.json is located
-
-      - name: ☄️ Run Tests (Galaxy Diagnostics) ☄️
-        run: |
-          echo "Running tests..."
-          npm test
-        working-directory: ./  # Set to the root directory
-
-      - name: 🚀 Build the Universe (Compile) 🚀
-        run: |
-          echo "Starting build process..."
-          npm run build
-        working-directory: ./  # Set to the root directory
-
-  # 🌠 Intergalactic Deployment 🌠
-  deploy:
-    needs: build  # 🌠 Only launches if build passes
-    runs-on: ubuntu-latest  # 🌑 Deployment system on Ubuntu
-
-    steps:
-      - name: 🌠 Checkout Code from Repository Nebula
+      - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: 🚀 Deploy to the Cosmic Server 🌌
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: echo "No dependencies to install."
+
+      - name: Run Server
         run: |
-          echo "🚀 Launching deployment across the stars..."
-          # Cosmic transport commands, e.g., scp or rsync for server deployment.
+          echo "Starting server..."
+          node index.js
