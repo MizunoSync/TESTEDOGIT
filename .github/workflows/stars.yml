@@ -1,48 +1,61 @@
-name: CI/CD Pipeline
+name: 🌌 CI/CD Cosmic Pipeline 🚀
 
+# 🌠 When Stars Align (Trigger) 🌠
 on:
   push:
     branches:
-      - main  # Define the branch to trigger the pipeline on push.
+      - main  # 🌟 Shooting Star (Push to main triggers the pipeline)
   pull_request:
     branches:
-      - main
+      - main  # 🌌 Cosmic Pull (Triggers on pull requests to main)
 
+# 🌌 Star Clusters (Jobs) 🌌
 jobs:
+  # 🌟 Galactic Build Job 🌟
   build:
-    runs-on: ubuntu-latest  # Define the OS.
+    runs-on: ubuntu-latest  # 🌑 Base on Ubuntu, our cosmic platform
 
     steps:
-      - name: Checkout do Código
-        uses: actions/checkout@v2  # Action to clone the repository.
+      - name: 🌠 Checkout Code from the Repository Nebula
+        uses: actions/checkout@v2  # 🚀 Pulls down your code
 
-      - name: Configurar Node.js
+      - name: 🌠 Initialize Node.js Constellation
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Adjust to the required Node.js version.
+          node-version: '14'  # 🔭 Target Node.js version for your galaxy
 
-      - name: Instalar Dependências
-        run: npm install  # Installs project dependencies.
+      - name: 🌌 Install Dependencies (Powering Up) 🌌
+        run: |
+          echo "Installing dependencies..."
+          npm install
+        continue-on-error: false  # Stops if npm install fails
 
-      - name: Rodar Testes
-        run: npm test  # Executes tests (assuming Jest, Mocha, etc.).
+      - name: ☄️ Run Tests (Galaxy Diagnostics) ☄️
+        run: |
+          echo "Running tests..."
+          npm test
+        continue-on-error: false  # Stops if tests fail
 
-      - name: Build do Projeto
-        run: npm run build  # Compiles the project.
+      - name: 🚀 Build the Universe (Compile) 🚀
+        run: |
+          echo "Starting build process..."
+          npm run build
+        continue-on-error: false  # Stops if build fails
 
+  # 🌠 Intergalactic Deployment 🌠
   deploy:
-    needs: build  # Only runs deploy if the "build" job succeeds.
-    runs-on: ubuntu-latest
+    needs: build  # 🌠 Only launches if build passes
+    runs-on: ubuntu-latest  # 🌑 Deployment system on Ubuntu
 
     steps:
-      - name: Checkout do Código
+      - name: 🌠 Checkout Code from Repository Nebula
         uses: actions/checkout@v2
 
-      - name: Deploy para Servidor
+      - name: 🚀 Deploy to the Cosmic Server 🌌
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          echo "Fazendo upload dos arquivos..."
-          # Deployment commands, e.g., scp or rsync to remote server, or specific commands.
+          echo "🚀 Launching deployment across the stars..."
+          # Cosmic transport commands, e.g., scp or rsync for server deployment.
