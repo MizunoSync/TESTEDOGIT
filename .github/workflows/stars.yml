@@ -1,1 +1,49 @@
 
+- name: Configurar Node.js
+  uses: actions/setup-node@v2
+  with:
+    node-version: '14'  # Altere para a versão necessária do Node.js
+
+- name: Instalar Dependências
+  run: npm install  # Instala as dependências do projeto.
+
+- name: Rodar Testes
+  run: npm test  # Executa testes (caso esteja usando Jest, Mocha ou outro framework).
+
+- name: Build do Projeto
+  run: npm run build  # Compila o projeto (alterar conforme o comando específico).
+
+deploy:
+  needs: build  # Só executa o deploy se o job "build" for bem-sucedido.
+  runs-on: ubuntu-latest
+
+  name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Define a branch que ativará o pipeline quando ocorrer um push.
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Define o sistema operacional que será usado.
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v2  # Ação para clonar o repositório.
+
+        steps:
+  - name: Checkout do Código
+    uses: actions/checkout@v2
+
+  - name: Deploy para Servidor
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    run: |
+      echo "Fazendo upload dos arquivos..."
+      # Comandos de deploy, ex.: scp ou rsync para servidor remoto, ou comandos específicos.
