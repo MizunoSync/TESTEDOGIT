@@ -13,7 +13,7 @@ on:
 jobs:
   # 🌟 Galactic Build Job 🌟
   build:
-    runs-on: ubuntu-latest  # 🌑 Base on Ubuntu, our cosmic platform
+    runs-on: ubuntu-latest  # 🌑 Base on Ubuntu, our cosmic platform 
 
     steps:
       - name: 🌠 Checkout Code from the Repository Nebula
